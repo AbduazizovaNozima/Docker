@@ -2,24 +2,24 @@
 FROM python:3.11-slim
 
 #Docker ichida loyiha ishlashi uchun katalog
-WORKDIR /app
+WORKDIR /nozima
 
 #Konteyner ichiga requirementsni import qilamiz
-COPY requirements.txt /app/
+COPY requirements.txt /nozima/
 
 #Kerakli kurubxonalarni ornatamiz
 RUN pip install --no-cache-dir -r requirements.txt
 
 #Django loyihamizni konteynerga o'takazamiz
-COPY . /app/
+COPY . /nozima/
 
 ENV PYTHONUNBUFFERED=1
 
 #Dasturchilar uchun ishora qaysi portda ishlashi togrisida
-EXPOSE 8000
+EXPOSE 8011
 
 #Docker ichida ishga tushirish komandasi
-CMD ["bash", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+CMD ["bash", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8011"]
 
 
 
